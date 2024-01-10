@@ -1,0 +1,31 @@
+{
+  "name": "leafjs",
+  "version": "0.0.1",
+  "description": "frontend library for UI",
+  "source": "src/leaf.js",
+  "main": "dist/leaf.js",
+  "module": "dist/leaf.mjs",
+  "standalone": "dist/leaf-min.js",
+  "targets": {
+    "main": {
+      "source": "src/leaf.js"
+    },
+    "module": {
+      "source": "src/leaf.js"
+    },
+    "standalone": {
+      "source": "src/standalone.js",
+      "outputFormat": "global"
+    }
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "watch": "parcel watch",
+    "build": "parcel build"
+  },
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "parcel": "^2.11.0"
+  }
+}
