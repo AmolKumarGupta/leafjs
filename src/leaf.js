@@ -1,6 +1,6 @@
 
 let __lf_activeEffect = null;
-let __lf_deps  = new WeakMap();
+let __lf_deps = new WeakMap();
 
 export default function leaf(arg1) {
 
@@ -9,15 +9,16 @@ export default function leaf(arg1) {
 
     let _state = {};
 
-    [...document.querySelectorAll(`${rootEle} *`)].filter(ele => {
-        return ele.getAttributeNames().filter(e => e.startsWith(':'))
-    })
-    .forEach(ele => {
-        if (ele.hasAttribute(':state')) {
-            let _local = JSON.parse(ele.getAttribute(':state').replaceAll(/(\w+)(\s+):/g, '"$1":'))
-            _state = {..._state, ..._local}
-        }
-    })
+    [...document.querySelectorAll(`${rootEle} *`)]
+        .filter(ele => {
+            return ele.getAttributeNames().filter(e => e.startsWith(':'))
+        })
+        .forEach(ele => {
+            if (ele.hasAttribute(':state')) {
+                let _local = JSON.parse(ele.getAttribute(':state').replaceAll(/(\w+)(\s+):/g, '"$1":'))
+                _state = { ..._state, ..._local }
+            }
+        })
 
     state = new signal(_state);
 
@@ -40,13 +41,13 @@ function signal(obj) {
         get: (target, key, receiver) => {
 
             let deps = __lf_deps.get(target)
-            if (! deps) {
+            if (!deps) {
                 deps = new Map();
                 __lf_deps.set(target, deps)
             }
 
             let effects = deps.get(key)
-            if (! effects) {
+            if (!effects) {
                 effects = new Set();
                 deps.set(key, effects)
             }
@@ -62,17 +63,17 @@ function signal(obj) {
             let result = Reflect.set(target, key, val, receiver)
 
             let deps = __lf_deps.get(target)
-            if (! deps) {
+            if (!deps) {
                 return result;
             }
 
             let effects = deps.get(key)
-            if (! effects) {
+            if (!effects) {
                 return result
             }
 
             effects.forEach((effect) => effect())
-            
+
             return result
         }
     })
