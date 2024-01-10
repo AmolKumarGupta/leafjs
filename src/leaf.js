@@ -1,27 +1,34 @@
 
 let __lf_activeEffect = null;
-let __lf_deps  = new WeakMap();
+let __lf_deps = new WeakMap();
 
 export default function leaf(arg1) {
 
     let rootEle = arg1;
     let state = new signal({});
 
-    let _state = {};
+    [...document.querySelectorAll(`${rootEle} *`)]
+        .filter(ele => {
+            return ele.getAttributeNames().filter(e => e.startsWith(':'))
+        })
+        .forEach(ele => {
+            if (ele.hasAttribute(':state')) {
+                let _local = JSON.parse(ele.getAttribute(':state').replaceAll(/(\w+)(\s+):/g, '"$1":'))
 
-    [...document.querySelectorAll(`${rootEle} *`)].filter(ele => {
-        return ele.getAttributeNames().filter(e => e.startsWith(':'))
-    })
-    .forEach(ele => {
-        if (ele.hasAttribute(':state')) {
-            let _local = JSON.parse(ele.getAttribute(':state').replaceAll(/(\w+)(\s+):/g, '"$1":'))
-            _state = {..._state, ..._local}
-        }
-    })
+                for(const [key, val] of Object.entries(_local)) {
+                    state[key] = val;
+                }
+            }
 
-    state = new signal(_state);
+            if (ele.hasAttribute(':text')) {
+                let prop = ele.getAttribute(':text')
+                if (state[prop] === undefined) {
+                    throw new Error(`${prop} is not found in state.\n\tCheck ${ele.outerHTML}`);
+                }
 
-    // console.log(_state)
+                effect(() => { ele.textContent = state[prop] })
+            }
+        })
 
     return {
         rootEle,
@@ -35,18 +42,18 @@ export function effect(cb) {
     __lf_activeEffect = null;
 }
 
-function signal(obj) {
+export function signal(obj) {
     return new Proxy(obj, {
         get: (target, key, receiver) => {
 
             let deps = __lf_deps.get(target)
-            if (! deps) {
+            if (!deps) {
                 deps = new Map();
                 __lf_deps.set(target, deps)
             }
 
             let effects = deps.get(key)
-            if (! effects) {
+            if (!effects) {
                 effects = new Set();
                 deps.set(key, effects)
             }
@@ -62,17 +69,17 @@ function signal(obj) {
             let result = Reflect.set(target, key, val, receiver)
 
             let deps = __lf_deps.get(target)
-            if (! deps) {
+            if (!deps) {
                 return result;
             }
 
             let effects = deps.get(key)
-            if (! effects) {
+            if (!effects) {
                 return result
             }
 
             effects.forEach((effect) => effect())
-            
+
             return result
         }
     })

@@ -3,19 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Basic</title>
+    <title>Input</title>
 </head>
 <body id="app">
 
-    <div :state="{ count : 0 }">
+    <div :state='{ msg : "i am test"}'>
+        <input onkeyup="lf.state.msg = this.value">
+
         <div>
-            <span :state='{ msg : "i am test"}' :text="msg"></span>
+            <span :text="msg"></span>
         </div>
     </div>
 
     <script src="../dist/leaf-min.js"></script>
     <script>
+
         let lf = leaf('#app');
+
     </script>
+
 </body>
 </html>
