@@ -7,8 +7,6 @@ export default function leaf(arg1) {
     let rootEle = arg1;
     let state = new signal({});
 
-    let _state = {};
-
     [...document.querySelectorAll(`${rootEle} *`)]
         .filter(ele => {
             return ele.getAttributeNames().filter(e => e.startsWith(':'))
@@ -16,13 +14,21 @@ export default function leaf(arg1) {
         .forEach(ele => {
             if (ele.hasAttribute(':state')) {
                 let _local = JSON.parse(ele.getAttribute(':state').replaceAll(/(\w+)(\s+):/g, '"$1":'))
-                _state = { ..._state, ..._local }
+
+                for(const [key, val] of Object.entries(_local)) {
+                    state[key] = val;
+                }
+            }
+
+            if (ele.hasAttribute(':text')) {
+                let prop = ele.getAttribute(':text')
+                if (state[prop] === undefined) {
+                    throw new Error(`${prop} is not found in state.\n\tCheck ${ele.outerHTML}`);
+                }
+
+                effect(() => { ele.textContent = state[prop] })
             }
         })
-
-    state = new signal(_state);
-
-    // console.log(_state)
 
     return {
         rootEle,
@@ -36,7 +42,7 @@ export function effect(cb) {
     __lf_activeEffect = null;
 }
 
-function signal(obj) {
+export function signal(obj) {
     return new Proxy(obj, {
         get: (target, key, receiver) => {
 
