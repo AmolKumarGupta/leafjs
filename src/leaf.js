@@ -28,6 +28,16 @@ export default function leaf(arg1) {
 
                 effect(() => { ele.textContent = state[prop] })
             }
+
+            if (ele.hasAttribute(':html')) {
+                let prop = ele.getAttribute(':html')
+                if (state[prop] === undefined) {
+                    throw new Error(`${prop} is not found in state.\n\tCheck ${ele.outerHTML}`);
+                }
+
+                effect(() => { ele.innerHTML = state[prop] })
+            }
+
         })
 
     return {
