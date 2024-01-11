@@ -1,6 +1,6 @@
 {
   "name": "leafjs",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "frontend library for UI",
   "source": "src/leaf.js",
   "main": "dist/leaf.js",
