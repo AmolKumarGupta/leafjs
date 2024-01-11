@@ -1,6 +1,6 @@
 
-let __lf_activeEffect = null;
-let __lf_deps = new WeakMap();
+let activeEffect = null;
+let depsCluster = new WeakMap();
 
 export default function leaf(arg1) {
 
@@ -37,19 +37,19 @@ export default function leaf(arg1) {
 }
 
 export function effect(cb) {
-    __lf_activeEffect = cb;
+    activeEffect = cb;
     cb();
-    __lf_activeEffect = null;
+    activeEffect = null;
 }
 
 export function signal(obj) {
     return new Proxy(obj, {
         get: (target, key, receiver) => {
 
-            let deps = __lf_deps.get(target)
+            let deps = depsCluster.get(target)
             if (!deps) {
                 deps = new Map();
-                __lf_deps.set(target, deps)
+                depsCluster.set(target, deps)
             }
 
             let effects = deps.get(key)
@@ -58,8 +58,8 @@ export function signal(obj) {
                 deps.set(key, effects)
             }
 
-            if (__lf_activeEffect) {
-                effects.add(__lf_activeEffect);
+            if (activeEffect) {
+                effects.add(activeEffect);
             }
 
             return Reflect.get(target, key, receiver)
@@ -68,7 +68,7 @@ export function signal(obj) {
 
             let result = Reflect.set(target, key, val, receiver)
 
-            let deps = __lf_deps.get(target)
+            let deps = depsCluster.get(target)
             if (!deps) {
                 return result;
             }
