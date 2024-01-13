@@ -1,7 +1,16 @@
-import { effect, signal } from "./reactive";
+'use strict'
 
+import { effect, signal } from "./reactive";
+import './macro/index'
+import { registerMacro } from "./marcos";
+
+/**
+ * 
+ * @param {string} arg1 
+ */
 export default function leaf(arg1) {
 
+    let prefix = ':';
     let rootEle = arg1;
     let state = new signal({});
 
@@ -10,32 +19,9 @@ export default function leaf(arg1) {
             return ele.getAttributeNames().filter(e => e.startsWith(':'))
         })
         .forEach(ele => {
-            if (ele.hasAttribute(':state')) {
-                let _local = JSON.parse(ele.getAttribute(':state').replaceAll(/(\w+)(\s+):/g, '"$1":'))
-
-                for(const [key, val] of Object.entries(_local)) {
-                    state[key] = val;
-                }
-            }
-
-            if (ele.hasAttribute(':text')) {
-                let prop = ele.getAttribute(':text')
-                if (state[prop] === undefined) {
-                    throw new Error(`${prop} is not found in state.\n\tCheck ${ele.outerHTML}`);
-                }
-
-                effect(() => { ele.textContent = state[prop] })
-            }
-
-            if (ele.hasAttribute(':html')) {
-                let prop = ele.getAttribute(':html')
-                if (state[prop] === undefined) {
-                    throw new Error(`${prop} is not found in state.\n\tCheck ${ele.outerHTML}`);
-                }
-
-                effect(() => { ele.innerHTML = state[prop] })
-            }
-
+            ele.getAttributeNames()
+                .filter(e => e.startsWith(prefix))
+                .forEach(e => registerMacro(e.slice(1), {ele, state}));
         })
 
     return {
