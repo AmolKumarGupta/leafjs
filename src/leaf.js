@@ -8,24 +8,19 @@ import { registerMacro } from "./marcos";
  * 
  * @param {string} arg1 
  */
-export default function leaf(arg1) {
+export default function Leaf(arg1) {
 
     let prefix = ':';
-    let rootEle = arg1;
-    let state = new signal({});
+    this.rootEle = arg1;
+    this.state = new signal({});
 
-    [...document.querySelectorAll(`${rootEle} *`)]
+    [...document.querySelectorAll(`${this.rootEle} *`)]
         .filter(ele => {
             return ele.getAttributeNames().filter(e => e.startsWith(':'))
         })
         .forEach(ele => {
             ele.getAttributeNames()
                 .filter(e => e.startsWith(prefix))
-                .forEach(e => registerMacro(e.slice(1), {ele, state}));
+                .forEach(e => registerMacro(e.slice(1), {ele, state: this.state}));
         })
-
-    return {
-        rootEle,
-        state
-    }
 }
