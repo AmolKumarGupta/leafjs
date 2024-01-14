@@ -10,9 +10,8 @@ export function effect(cb) {
 export function signal(obj) {
     let depsCluster = new WeakMap();
 
-    return new Proxy(obj, {
+    let handler = {
         get: (target, key, receiver) => {
-
             let deps = depsCluster.get(target)
             if (!deps) {
                 deps = new Map();
@@ -27,6 +26,10 @@ export function signal(obj) {
 
             if (activeEffect) {
                 effects.add(activeEffect);
+            }
+
+            if (typeof target[key] == 'object') {
+                return new Proxy(target[key], handler)
             }
 
             return Reflect.get(target, key, receiver)
@@ -49,5 +52,7 @@ export function signal(obj) {
 
             return result
         }
-    })
+    }
+
+    return new Proxy(obj, handler)
 }
