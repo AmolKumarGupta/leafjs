@@ -13,8 +13,6 @@
 ### Fixes
 - Fix nested state problem (#17)
 - Fix invalid json error if there is no space between key and ':' in state macro
-
-### Fixes
 - Change title to 'Marco :html' in examples/html
 
 
