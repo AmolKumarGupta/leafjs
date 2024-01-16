@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Macro :show</title>
+</head>
+<body id="app">
+
+    <div :state='{ open: false }'>
+        <button onclick="lf.state.open = !lf.state.open">Toggle button</button>
+        <div :show="open">This is a container</div>
+    </div>
+
+    <script src="../../dist/leaf-min.js"></script>
+    <script>
+        let lf = new leaf('#app');
+    </script>
+</body>
+</html>

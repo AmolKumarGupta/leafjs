@@ -6,11 +6,13 @@
 ## [0.1.0] - Beta
 
 ### Features
+- Add `show` macro
 - Add support for `new` operator rather then calling as a function
 - Add Readme, ISSUE_TEMPLATES and CONTRIBUTING
 - Add `macro` dir for creating new macro
 
 ### Fixes
+- Fix typo for using `prefix` instead of `:` in Leaf function 
 - Fix nested state problem (#17)
 - Fix invalid json error if there is no space between key and ':' in state macro
 - Change title to 'Marco :html' in examples/html
