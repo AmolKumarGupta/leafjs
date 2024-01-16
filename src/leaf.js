@@ -16,7 +16,7 @@ export default function Leaf(arg1) {
 
     [...document.querySelectorAll(`${this.rootEle} *`)]
         .filter(ele => {
-            return ele.getAttributeNames().filter(e => e.startsWith(':'))
+            return ele.getAttributeNames().filter(e => e.startsWith(prefix)).length
         })
         .forEach(ele => {
             ele.getAttributeNames()
