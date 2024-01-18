@@ -6,6 +6,7 @@
 ## [0.1.0] - Beta
 
 ### Features
+- Add examples like counter
 - Add `show` macro
 - Add support for `new` operator rather then calling as a function
 - Add Readme, ISSUE_TEMPLATES and CONTRIBUTING

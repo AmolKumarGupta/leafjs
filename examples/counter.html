@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Counter</title>
+</head>
+<body id="app">
+    <h2>Counter</h2>
+    <div :state='{ count : 0 }'>
+        <h4>Count: <span :text="count"></span></h4>
+
+        <button onclick="lf.state.count++">+</button>
+        <button onclick="lf.state.count--">-</button>
+    </div>
+
+    <script src="../dist/leaf-min.js"></script>
+    <script>
+        let lf = new leaf('#app');
+    </script>
+</body>
+</html>
