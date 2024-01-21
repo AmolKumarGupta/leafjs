@@ -6,6 +6,7 @@
 ## [0.1.0] - Beta
 
 ### Features
+- Allow function as a value in macros [(#22)](https://github.com/AmolKumarGupta/leafjs/issues/22)
 - Add examples like counter
 - Add `show` macro
 - Add support for `new` operator rather then calling as a function
@@ -14,7 +15,7 @@
 
 ### Fixes
 - Fix typo for using `prefix` instead of `:` in Leaf function 
-- Fix nested state problem (#17)
+- Fix nested state problem [(#17)](https://github.com/AmolKumarGupta/leafjs/issues/17)
 - Fix invalid json error if there is no space between key and ':' in state macro
 - Change title to 'Marco :html' in examples/html
 
