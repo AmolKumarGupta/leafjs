@@ -14,6 +14,7 @@
 - Add `macro` dir for creating new macro
 
 ### Fixes
+- Remove `eval` to execute expressions [(#26)](https://github.com/AmolKumarGupta/leafjs/issues/26)
 - Fix typo for using `prefix` instead of `:` in Leaf function 
 - Fix nested state problem [(#17)](https://github.com/AmolKumarGupta/leafjs/issues/17)
 - Fix invalid json error if there is no space between key and ':' in state macro
