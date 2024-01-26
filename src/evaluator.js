@@ -8,12 +8,13 @@ export default function evaluate({state}, str) {
 }
 
 function evalState({state}, str) {
-    return eval(`state.${str}`)
+    const fn = new Function('state', `return state.${str}`)
+    return fn(state)
 }
 
-function evalFn(data, str) {
-    fn = eval(str);
-    return fn(data);
+function evalFn({state}, str) {
+    let fn = new Function('$s', '$state', `return (${str})`)
+    return fn(state, state)();
 }
 
 function isSingleWord(str) {
