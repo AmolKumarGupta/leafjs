@@ -6,6 +6,8 @@
 ## [0.1.0] - Beta
 
 ### Features
+- Add script to serve example on browser [(#30)](https://github.com/AmolKumarGupta/leafjs/issues/30)
+- Using `jest` for test driven development [(#29)](https://github.com/AmolKumarGupta/leafjs/issues/29)
 - Allow function as a value in macros [(#22)](https://github.com/AmolKumarGupta/leafjs/issues/22)
 - Add examples like counter
 - Add `show` macro
