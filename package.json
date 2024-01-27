@@ -21,7 +21,8 @@
   "scripts": {
     "test": "jest",
     "start": "parcel watch",
-    "build": "parcel build"
+    "clear": "rm -rf dist/",
+    "build": "npm run clear && parcel build"
   },
   "author": "",
   "license": "MIT",
