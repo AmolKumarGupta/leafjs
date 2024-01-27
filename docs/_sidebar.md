@@ -6,3 +6,5 @@
 
 - Basic
     - [Macro](macro.md)
+    - [Method](method.md)
+    - [Property](property.md)

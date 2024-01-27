@@ -3,7 +3,7 @@
 
 
 
-## [0.1.0] - Beta
+## [1.0.0] - 2024-01-28
 
 ### Features
 - Add script to serve example on browser [(#30)](https://github.com/AmolKumarGupta/leafjs/issues/30)

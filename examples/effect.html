@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Effect</title>
+</head>
+<body id="app">
+    <h4 :text="count"></h4>
+
+    <button :state="{ count: 0 }" onclick="lf.state.count++" >+1</button>
+
+    <script src="../dist/leaf-min.js"></script>
+    <script>
+        let lf = new leaf('#app');
+
+        effect(() => {
+            console.log(`count is ${lf.state.count}`)
+        })
+    </script>
+</body>
+</html>

@@ -1,4 +1,7 @@
 ## Leaf js
+
+![docs](https://github.com/AmolKumarGupta/leafjs/actions/workflows/pages/pages-build-deployment/badge.svg)
+
 Minimal Framework for building User Interfaces directly in HTML markup.
 
 ```html
@@ -16,7 +19,7 @@ Minimal Framework for building User Interfaces directly in HTML markup.
 
 
 ## Docs
-Please check examples. Docs Coming Soon !
+Please check out the [docs](https://amolkumargupta.github.io/leafjs/)
 
 
 ## Examples
