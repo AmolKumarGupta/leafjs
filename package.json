@@ -22,7 +22,8 @@
     "test": "jest",
     "start": "parcel watch",
     "clear": "rm -rf dist/",
-    "build": "npm run clear && parcel build"
+    "build": "npm run clear && parcel build",
+    "examples": "node scripts/examples.js"
   },
   "author": "",
   "license": "MIT",
