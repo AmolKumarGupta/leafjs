@@ -10,7 +10,7 @@ Minimal Framework for building User Interfaces directly in HTML markup.
 
 <script src="../dist/leaf-min.js"></script>
 <script>
-    let lf = leaf('#app');
+    let lf = new leaf('#app');
 </script>
 ```
 

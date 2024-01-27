@@ -1,6 +1,6 @@
 {
   "name": "leafjs",
-  "version": "0.0.2",
+  "version": "1.0.0",
   "description": "frontend library for UI",
   "source": "src/leaf.js",
   "main": "dist/leaf.js",
@@ -23,7 +23,8 @@
     "start": "parcel watch",
     "clear": "rm -rf dist/",
     "build": "npm run clear && parcel build",
-    "examples": "node scripts/examples.js"
+    "examples": "node scripts/examples.js",
+    "docs": "node scripts/docs.js"
   },
   "author": "",
   "license": "MIT",

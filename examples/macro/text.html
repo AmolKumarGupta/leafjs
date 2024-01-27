@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Macro :text</title>
+</head>
+<body id="app">
+
+    <div :state='{ msg : "This is a alert box" }'>
+        <div :html="msg"></div>
+    </div>
+
+    <script src="../../dist/leaf-min.js"></script>
+    <script>
+        let lf = new leaf('#app');
+    </script>
+</body>
+</html>
