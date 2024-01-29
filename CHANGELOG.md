@@ -3,6 +3,13 @@
 
 
 
+## [1.0.1] - Beta
+
+### Features
+- Add `$el` property [#35](https://github.com/AmolKumarGupta/leafjs/issues/35)
+
+
+
 ## [1.0.0] - 2024-01-28
 
 ### Features

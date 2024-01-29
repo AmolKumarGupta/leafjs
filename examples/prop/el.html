@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Property: $el</title>
+</head>
+<body id="app">
+
+    <div>
+        <span :text="() => 'This is a ' + $el.tagName"></span>
+    </div>
+
+    <script src="../dist/leaf-min.js"></script>
+    <script>
+        let lf = new leaf('#app');
+    </script>
+</body>
+</html>
