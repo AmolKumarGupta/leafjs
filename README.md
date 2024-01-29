@@ -20,7 +20,9 @@ Minimal Framework for building User Interfaces directly in HTML markup.
 
 ## Docs
 Please check out the [docs](https://amolkumargupta.github.io/leafjs/)
-
+```
+npm run docs
+```
 
 ## Examples
 serve `examples` and `dist` dir 
