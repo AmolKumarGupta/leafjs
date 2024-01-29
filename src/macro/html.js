@@ -4,5 +4,5 @@ import { effect } from "../reactive";
 
 macro('html', ({ele, state}) => {    
     let prop = ele.getAttribute(':html')
-    effect(() => { ele.innerHTML = evaluate({state}, prop) })
+    effect(() => { ele.innerHTML = evaluate({state, ele}, prop) })
 })

@@ -1,6 +1,6 @@
 const { default: leaf } = require('../dist/leaf.js')
 
-describe("macros", () => {
+describe("Macros", () => {
 
     test("state macro", () => {
         document.body.innerHTML = `<div id="app">
