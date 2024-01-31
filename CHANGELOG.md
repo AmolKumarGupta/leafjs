@@ -6,6 +6,7 @@
 ## [1.0.1] - Beta
 
 ### Features
+- Add `$refs` property and `:ref` macro [#38](https://github.com/AmolKumarGupta/leafjs/issues/38)
 - Add `$el` property [#35](https://github.com/AmolKumarGupta/leafjs/issues/35)
 
 

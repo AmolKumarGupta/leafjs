@@ -44,4 +44,17 @@ describe("Macros", () => {
         expect(col.style.display).toBe("none")
     })
 
+    test("ref macro", () => {
+        document.body.innerHTML = `<div id="app">
+            <div id="col" :ref="colRef"></div>
+        </div>`;
+
+        let lf = new leaf("#app");
+        let col = document.querySelector('#col');
+        let ref = lf.ref('colRef')
+
+        expect(lf.refs()).toEqual(expect.any(Object));
+        expect(ref).toBe(col)
+    })
+
 })
