@@ -11,8 +11,18 @@ import { registerMacro } from "./marcos";
 export default function Leaf(arg1) {
 
     let prefix = ':';
+    const refs = new Map();
+
     this.rootEle = arg1;
     this.state = new signal({});
+
+    this.ref = function (name) {
+        return refs.has(name) ? refs.get(name) : undefined;
+    };
+
+    this.refs = function () {
+        return Object.fromEntries(refs);
+    };
 
     [...document.querySelectorAll(`${this.rootEle} *`)]
         .filter(ele => {
@@ -21,6 +31,8 @@ export default function Leaf(arg1) {
         .forEach(ele => {
             ele.getAttributeNames()
                 .filter(e => e.startsWith(prefix))
-                .forEach(e => registerMacro(e.slice(1), {ele, state: this.state}));
+                .forEach(e => registerMacro(e.slice(1), {
+                    ele, state: this.state, refs
+                }));
         })
 }

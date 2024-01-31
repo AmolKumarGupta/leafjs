@@ -12,9 +12,9 @@ function evalState({state}, str) {
     return fn(state)
 }
 
-function evalFn({state, ele}, str) {
-    let fn = new Function('$s', '$state', '$el', `return (${str})`)
-    return fn(state, state, ele)();
+function evalFn({state, ele, refs}, str) {
+    let fn = new Function('$s', '$state', '$el', '$refs', `return (${str})`)
+    return fn(state, state, ele, Object.fromEntries(refs))();
 }
 
 function isSingleWord(str) {
