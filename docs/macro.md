@@ -63,3 +63,24 @@ Toggle the visibility of an element
     <div :show="open">This is a container</div>
 </div>
 ```
+
+
+## Ref
+Creates the reference of the element, it requires a name for the reference.
+
+##### Example
+
+```html
+<div :ref="myEle">Apples</div>
+<span :text="() => $refs.myEle.innerHTML"></span>
+```
+
+`$refs` can also be accessed by instance.
+
+```js
+let lf = new leaf('#app');
+
+lf.refs() // return all refs 
+
+lf.ref("myEle") // return ref with name myEle
+```

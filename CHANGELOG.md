@@ -3,7 +3,7 @@
 
 
 
-## [1.0.1] - Beta
+## [1.0.1] - 2024-02-15
 
 ### Features
 - Add `$refs` property and `:ref` macro [#38](https://github.com/AmolKumarGupta/leafjs/issues/38)

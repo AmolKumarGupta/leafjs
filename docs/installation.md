@@ -8,9 +8,9 @@ You can download them as a script from here
 
 ### Links
 
- - [Standalone file (Recommended for browser uses)](https://github.com/AmolKumarGupta/leafjs/releases/download/v1.0.0/leaf-min.js)
- - [Commonjs module](https://github.com/AmolKumarGupta/leafjs/releases/download/v1.0.0/leaf.js)
- - [ESM module](https://github.com/AmolKumarGupta/leafjs/releases/download/v1.0.0/leaf.mjs)
+ - [Standalone file (Recommended for browser uses)](https://github.com/AmolKumarGupta/leafjs/releases/download/v1.0.1/leaf-min.js)
+ - [Commonjs module](https://github.com/AmolKumarGupta/leafjs/releases/download/v1.0.1/leaf.js)
+ - [ESM module](https://github.com/AmolKumarGupta/leafjs/releases/download/v1.0.1/leaf.mjs)
 
 ### Example
 ```html
